@@ -1,20 +1,19 @@
-name: C/C++ CI
+name: Build MIA Trigger VST3
 
 on:
   push:
     branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   build:
 
-    runs-on: ubuntu-latest
-
+    runs-on: 
+      windows-2022
+      cmake -S . -B build -A x64
     steps:
     - uses: actions/checkout@v4
-    - name: configure
-      run: ./configure
     - name: make
       run: make
     - name: make check
