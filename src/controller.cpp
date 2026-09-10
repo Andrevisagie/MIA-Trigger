@@ -10,5 +10,5 @@ public:
 } // namespace Mia
 
 namespace Mia {
-Steinberg::FUnknown* createController(void*) { return Controller::createInstance(nullptr); }
+Steinberg::FUnknown* createController(void*) { return Mia::Controller::createInstance(nullptr); }
 }
