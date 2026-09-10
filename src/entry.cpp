@@ -19,10 +19,10 @@ BEGIN_FACTORY_DEF("MIA Audio", "https://github.com", "support@mia-audio.example"
 
 DEF_CLASS2(
   INLINE_UID_FROM_FUID(Mia::kProcessorUID),
-  PClassInfo::kManyInstances,
+  Steinberg::PClassInfo::kManyInstances,
   kVstAudioEffectClass,
   "MIA Trigger",
-  Vst::kDistributable,
+  Steinberg::Vst::kDistributable,
   "Fx|Dynamics",
   "0.1.0",
   kVstVersionString,
@@ -30,7 +30,7 @@ DEF_CLASS2(
 
 DEF_CLASS2(
   INLINE_UID_FROM_FUID(Mia::kControllerUID),
-  PClassInfo::kManyInstances,
+  Steinberg::PClassInfo::kManyInstances,
   kVstComponentControllerClass,
   "MIA Trigger Controller",
   0,
