@@ -8,7 +8,7 @@ FetchContent_Declare(
   GIT_TAG v3.8.0
   GIT_SHALLOW TRUE
 )
-
+FetchContent_MakeAvailable(vst3sdk)
 
 set(SMTG_ADD_VST3_PLUGINS_SAMPLES OFF CACHE BOOL "" FORCE)
 set(SMTG_ADD_VST3_HOSTING_SAMPLES OFF CACHE BOOL "" FORCE)
