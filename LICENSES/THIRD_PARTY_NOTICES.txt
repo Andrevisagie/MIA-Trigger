@@ -1,0 +1,4 @@
+MIA Trigger uses the Steinberg VST3 SDK as a build dependency.
+The SDK is fetched from the official Steinberg GitHub repository.
+Review and retain all applicable third-party license and notice requirements
+when preparing a commercial release.
