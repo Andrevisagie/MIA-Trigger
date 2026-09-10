@@ -5,8 +5,7 @@ include(FetchContent)
 FetchContent_Declare(
   vst3sdk
   GIT_REPOSITORY https://github.com
-  GIT_TAG v3.8.0_build_121
-  GIT_SHALLOW TRUE
+  GIT_TAG  master
 )
 FetchContent_MakeAvailable(vst3sdk)
 
