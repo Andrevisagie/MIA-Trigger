@@ -4,8 +4,8 @@ project(MIATrigger VERSION 0.1.0 LANGUAGES CXX)
 include(FetchContent)
 FetchContent_Declare(
   vst3sdk
-  GIT_REPOSITORY https://github.com/steinbergmedia/vst3sdk.git
-  GIT_TAG v3.8.0
+  GIT_REPOSITORY https://github.com
+  GIT_TAG v3.8.0_build_121
   GIT_SHALLOW TRUE
 )
 FetchContent_MakeAvailable(vst3sdk)
