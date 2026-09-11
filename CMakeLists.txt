@@ -1,25 +1,44 @@
-cmake_minimum_required(VERSION 3.22)
-project(MIATrigger VERSION 0.1.0 LANGUAGES CXX)
+cmake_minimum_required(VERSION 3.12)
+project(MIA-Trigger VERSION 1.0)
 
+# Ensure C++ standard is set
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# -------------------------------------------------------------------
+# Fetch Submodules / Dependencies
+# -------------------------------------------------------------------
 include(FetchContent)
+
 FetchContent_Declare(
     intelliwip-populate
     GIT_REPOSITORY https://github.com
     GIT_TAG        master
 )
-FetchContent_MakeAvailable(vst3sdk)
 
-set(SMTG_ADD_VST3_PLUGINS_SAMPLES OFF CACHE BOOL "" FORCE)
-set(SMTG_ADD_VST3_HOSTING_SAMPLES OFF CACHE BOOL "" FORCE)
+# Populate manually instead of using MakeAvailable to prevent CMake 
+# from looking for a non-existent root CMakeLists.txt in the submodules repo
+FetchContent_GetProperties(intelliwip-populate)
+if(NOT intelliwip-populate_POPULATED)
+    FetchContent_Populate(intelliwip-populate)
+    
+    # NOTE: If there are independent library folders inside the downloaded 
+    # submodules folder that contain their own CMakeLists.txt, add them here:
+    # add_subdirectory(${intelliwip-populate_SOURCE_DIR}/<folder_name>)
+endif()
 
-smtg_add_vst3plugin(MIA_Trigger
-  src/processor.cpp
-  src/controller.cpp
-  src/entry.cpp
+# -------------------------------------------------------------------
+# Project Target Configuration
+# -------------------------------------------------------------------
+# Define the executable using the source files found in your repository
+add_executable(MIA-Trigger
+    src/MiaTriggerController.cpp
+    src/MiaTriggerEntry.cpp
+    src/MiaTriggerProcessor.cpp
 )
 
-target_compile_features(MIA_Trigger PRIVATE cxx_std_17)
+# Include the local 'include' directory for headers
+target_include_directories(MIA-Trigger PRIVATE include)
 
-if(MSVC)
-  target_compile_options(MIA_Trigger PRIVATE /EHsc /W4)
-endif()
+# Include the downloaded submodules directory so your source files can find its headers
+target_include_directories(MIA-Trigger PRIVATE ${intelliwip-populate_SOURCE_DIR})
