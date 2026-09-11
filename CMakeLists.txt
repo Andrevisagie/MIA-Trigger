@@ -3,9 +3,9 @@ project(MIATrigger VERSION 0.1.0 LANGUAGES CXX)
 
 include(FetchContent)
 FetchContent_Declare(
-  vst3sdk
-  GIT_REPOSITORY https://github.com
-  GIT_TAG  master
+    intelliwip-populate
+    GIT_REPOSITORY https://github.com
+    GIT_TAG        master
 )
 FetchContent_MakeAvailable(vst3sdk)
 
